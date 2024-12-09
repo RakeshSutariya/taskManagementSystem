@@ -1,0 +1,286 @@
+{
+	"info": {
+		"_postman_id": "525f8d2e-a896-4369-8899-26aee2045c7f",
+		"name": "Task Menegament System",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "27761793",
+		"_collection_link": "https://crimson-trinity-863002.postman.co/workspace/My-Workspace~c3209068-9b18-4ba6-87c7-92cf85ea6572/collection/27761793-525f8d2e-a896-4369-8899-26aee2045c7f?action=share&source=collection_link&creator=27761793"
+	},
+	"item": [
+		{
+			"name": "User",
+			"item": [
+				{
+					"name": "Register API",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"username\": \"Rakesh Sutariya\",\n    \"password\": \"RakeshSutariya@123\",\n    \"email\": \"rakesh.sutariya59@gmail.com\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{API_URL}}/api/register",
+							"host": [
+								"{{API_URL}}"
+							],
+							"path": [
+								"api",
+								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Login API",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\": \"rakesh.sutariya59@gmail.com\",\n    \"password\": \"RakeshSutariya@123\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{API_URL}}/api/login",
+							"host": [
+								"{{API_URL}}"
+							],
+							"path": [
+								"api",
+								"login"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Task",
+			"item": [
+				{
+					"name": "Create Task API",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "authorization",
+								"value": "{{AUTHORIZATION}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"title\": \"User create API\",\n    \"description\": \"User login API\",\n    \"dueDate\": \"2024-12-09 13:55:12\", // Due date formate like 2024-12-09 09:36:12\n    \"status\": \"pending\" // pending, inProgress, completed\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{API_URL}}/api/tasks",
+							"host": [
+								"{{API_URL}}"
+							],
+							"path": [
+								"api",
+								"tasks"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Task API Copy",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "authorization",
+								"value": "{{AUTHORIZATION}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{API_URL}}/api/tasks",
+							"host": [
+								"{{API_URL}}"
+							],
+							"path": [
+								"api",
+								"tasks"
+							],
+							"query": [
+								{
+									"key": "status",
+									"value": "pending",
+									"description": "pending, inProgress, completed (Optional)",
+									"disabled": true
+								},
+								{
+									"key": "dueDate",
+									"value": "2024-12-09 09:59:12",
+									"description": "Due date formate like 2024-12-09 09:36:12 (Optional)",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Task API",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "authorization",
+								"value": "{{AUTHORIZATION}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{API_URL}}/api/tasks/:id?status=pending",
+							"host": [
+								"{{API_URL}}"
+							],
+							"path": [
+								"api",
+								"tasks",
+								":id"
+							],
+							"query": [
+								{
+									"key": "title",
+									"value": "demo api",
+									"description": "(Optional)",
+									"disabled": true
+								},
+								{
+									"key": "description",
+									"value": "just demo",
+									"description": "(Optional)",
+									"disabled": true
+								},
+								{
+									"key": "dueDate",
+									"value": "2024-12-09 09:59:12",
+									"description": "Due date formate like 2024-12-09 09:36:12 (Optional)",
+									"disabled": true
+								},
+								{
+									"key": "status",
+									"value": "pending",
+									"description": "pending, inProgress, completed (Optional)"
+								}
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "675680c1742476f1e007a873",
+									"description": "// Task id is required"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Task API",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "authorization",
+								"value": "{{AUTHORIZATION}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{API_URL}}/api/tasks/:id",
+							"host": [
+								"{{API_URL}}"
+							],
+							"path": [
+								"api",
+								"tasks",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "675680c1742476f1e007a873",
+									"description": "// Task id is required"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "User Wise Status Count",
+			"item": [
+				{
+					"name": "Status Count API",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "authorization",
+								"value": "{{AUTHORIZATION}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{API_URL}}/api/getCount/:id",
+							"host": [
+								"{{API_URL}}"
+							],
+							"path": [
+								"api",
+								"getCount",
+								":id"
+							],
+							"query": [
+								{
+									"key": "startDate",
+									"value": "2024-12-09 00:00:00",
+									"description": "Due date formate like 2024-12-09 09:36:12 (Optional)",
+									"disabled": true
+								},
+								{
+									"key": "endDate",
+									"value": "2024-12-09 10:55:12",
+									"description": "Due date formate like 2024-12-09 09:36:12 (Optional)",
+									"disabled": true
+								}
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "67568026742476f1e007a864",
+									"description": "// User id is required"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
